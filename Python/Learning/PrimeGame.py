@@ -1,4 +1,4 @@
-#Simple game that allows the user to guess if a number is a prime number or not.
+# Simple game that allows the user to guess if a number is a prime number or not.
 
 import random
 
@@ -13,6 +13,8 @@ def checkPrime(number):
         if number % n == 0:
             isPrime = False
             break
+    else:
+        isPrime = True  # loop not exited, assigning true
 
     return isPrime
 
