@@ -38,7 +38,7 @@ class Game:
 
     def Run(self):
         while self.running:
-            number = rand.randint(1, difficulties[2].range)
+            number = rand.randint(0, difficulties[2].range)
             print(number)
             print("...")
             time.sleep(2)
