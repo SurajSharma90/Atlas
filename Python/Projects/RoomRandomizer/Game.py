@@ -9,23 +9,23 @@ class Game:
         self.display = None
         self.rooms = []
         
-        self.InitWindow(1920, 1080)
+        self.init_window(1920, 1080)
     
-    def InitWindow(self, x, y):
+    def init_window(self, x, y):
         self.display = pygame.display
         self.window = self.display.set_mode((x, y))
         
-    def Render(self):
+    def render(self):
         self.window.fill((0,0,0))
         self.display.update()
     
-    def Run(self):
+    def run(self):
         while self.running:
             
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.running = False
             
-            self.Render()
+            self.render()
             
         pygame.quit()
