@@ -1,13 +1,12 @@
 from Player import Player
-from State import State, StateTypes
-
+from States.MainMenuState import MainMenuState
 
 class Game:
     def __init__(self):
         self.running = True
         self.player = Player("None")
         self.states = []
-        self.states.insert(0, State(StateTypes.MAIN_MENU))
+        self.states.insert(0, MainMenuState())
         self.active_state = self.states[0]
 
     def update(self):
