@@ -10,6 +10,11 @@ class Vector2f:
          x = self.x + other.x
          y = self.y + other.y
          return Vector2f(x, y)
+     
+    def __mul__(self, s):
+        x = self.x * s
+        y = self.y * s
+        return Vector2f(x, y)
 
 
 class Vectorf:
@@ -26,6 +31,11 @@ class Vectorf:
     def __add__(self, other):
         x = self.x + other.x
         y = self.y + other.y
+        return Vectorf(x, y)
+
+    def __mul__(self, s):
+        x = self.x * s
+        y = self.y * s
         return Vectorf(x, y)
 
     def normalized(self):

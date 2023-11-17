@@ -14,6 +14,7 @@ display.set_caption("Simple Window")
 
 points: [Circle] = []
 labels: [Circle] = []
+"""
 points.append(Circle(Vector2f(50.0, 50.0), POINT_RADIUS, pygame.Color(255, 0, 0, 255)))
 points.append(Circle(Vector2f(120.0, 120.0), POINT_RADIUS, pygame.Color(255, 0, 0, 255)))
 
@@ -21,6 +22,7 @@ vectorab=Vectorf(points[0].point, points[1].point)
 point_label = (points[0].point + vectorab)
 
 labels.append(Circle(point_label, LABEL_RADIUS, pygame.Color(0, 0, 255, 255)))
+"""
 create = True
 
 running = True
@@ -37,9 +39,11 @@ def add_label(labels: [Circle], points: [Circle]):
                 )
             )
         elif len(points) > 1:
-            last_point = points[len(points)-1]
-            nearest_neighbor = points[len(points)-2]
+            last_point = points[len(points)-1].point
+            nearest_neighbor = points[len(points)-2].point
             vec = points[len(points)-2].point + Vectorf(points[len(points) - 2].point, points[len(points) - 1].point)
+            print(last_point.x, nearest_neighbor.x)
+            
             mean_point = 0
             posx = 0
             posy = 0
