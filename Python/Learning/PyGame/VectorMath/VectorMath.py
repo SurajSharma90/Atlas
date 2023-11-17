@@ -6,6 +6,11 @@ class Vector2f:
         self.x = x
         self.y = y
 
+    def __add__(self, other):
+         x = self.x + other.x
+         y = self.y + other.y
+         return Vector2f(x, y)
+
 
 class Vectorf:
     def __init__(self, x: float, y: float):
@@ -18,10 +23,10 @@ class Vectorf:
         self.y = b.y - a.y
         self.magnitutde = sqrt(pow(self.x, 2) + pow(self.y, 2))
 
-    """
     def __add__(self, other):
-        return Vectorf(Vector2f(self.x + other.x), self.y + other.y)
-    """
+        x = self.x + other.x
+        y = self.y + other.y
+        return Vectorf(x, y)
 
     def normalized(self):
         return Vectorf(self.x / self.magnitutde, self.y / self.magnitutde)

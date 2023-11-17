@@ -18,8 +18,9 @@ points.append(Circle(Vector2f(50.0, 50.0), POINT_RADIUS, pygame.Color(255, 0, 0,
 points.append(Circle(Vector2f(120.0, 120.0), POINT_RADIUS, pygame.Color(255, 0, 0, 255)))
 
 vectorab=Vectorf(points[0].point, points[1].point)
+point_label = (points[0].point + vectorab)
 
-labels.append(Circle(Vector2f(vectorab.x, vectorab.y), POINT_RADIUS, pygame.Color(0, 0, 255, 255)))
+labels.append(Circle(point_label, LABEL_RADIUS, pygame.Color(0, 0, 255, 255)))
 create = True
 
 running = True
