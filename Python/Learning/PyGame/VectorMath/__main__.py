@@ -25,6 +25,32 @@ create = True
 
 running = True
 
+def add_label(labels: [Circle], points: [Circle]):
+    
+    if len(points) > 0:
+        if len(points) == 1:
+            labels.append(
+                Circle(
+                    Vector2f(points[0].point.x, points[0].point.y - POINT_RADIUS*2),
+                    LABEL_RADIUS,
+                    pygame.Color(0, 0, 255, 255),
+                )
+            )
+        elif len(points) > 1:
+            last_point = points[len(points)-1]
+            nearest_neighbor = points[len(points)-2]
+            vec = points[len(points)-2].point + Vectorf(points[len(points) - 2].point, points[len(points) - 1].point)
+            mean_point = 0
+            posx = 0
+            posy = 0
+            labels.append(
+                Circle(
+                    Vector2f(vec.x, vec.y),
+                    LABEL_RADIUS,
+                    pygame.Color(0, 0, 255, 255),
+                )
+            )
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -35,23 +61,14 @@ while running:
                 points.append(
                     Circle(
                         Vector2f(event.pos[0], event.pos[1]),
-                        20,
+                        POINT_RADIUS,
                         pygame.Color(255, 0, 0, 255),
                     )
                 )
+                add_label(labels=labels, points=points)
                 # print("You pressed the left mouse button at (%d, %d)" % event.pos)
         elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
             create = True
-
-    key = pygame.key.get_pressed()
-    if key[pygame.K_a] == True:
-        rect.move_ip(-1, 0)
-    elif key[pygame.K_d] == True:
-        rect.move_ip(1, 0)
-    if key[pygame.K_w] == True:
-        rect.move_ip(0, -1)
-    elif key[pygame.K_s] == True:
-        rect.move_ip(0, 1)
 
     screen.fill((0, 0, 0))
 
