@@ -2,7 +2,9 @@ from typing import Optional
 from dataclasses import dataclass
 from pygame import Color, Surface
 from Circle import Circle
+from Line import Line
 from Utils.VectorMath import Vector, Point
+import pygame
 
 POINT_RADIUS = 10
 LABEL_RADIUS = 5
@@ -18,8 +20,12 @@ class Polygon:
         self.labels = []
 
     def _calc_label_positions(self):
-        for i in range(0, len(self.labels)):
-            self.labels[i].point = self.points[i].point - Point(0, 10)
+        pl = len(self.points)
+        for i in range(pl-1, -1, -1):
+            if pl == 1:
+                self.labels[i].point = self.points[i].point - Point(0, 10)
+            elif pl > 1 and i > 0 :
+                self.labels[i].point = (self.points[i-1].point + Vector(self.points[i-1].point, self.points[i].point)) * 1.1
 
     def add_point(self, point: Point):
         # Point
@@ -31,6 +37,9 @@ class Polygon:
         self._calc_label_positions()
 
     def render(self, surface: Surface):
+        if len(self.points) > 1:
+            pygame.draw.lines(surface=surface, color=Color(255, 255, 255), closed=False, points=[(point.point.x, point.point.y) for point in self.points])
+            
         for i in range(0, len(self.points)):
             self.points[i].render(surface)
             self.labels[i].render(surface)
