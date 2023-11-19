@@ -11,11 +11,7 @@ class Difficulty:
         self.sleep = sleep
 
 
-difficulties = [
-    Difficulty("easy", 100, 1),
-    Difficulty("medium", 1000, 1),
-    Difficulty("hard", 1000000, 1),
-]
+difficulties = [Difficulty("easy", 100, 1), Difficulty("medium", 1000, 1), Difficulty("hard", 1000000, 1)]
 
 level = [1]
 exp = [0]
@@ -26,9 +22,7 @@ def UpdateLevel():
     if exp[0] >= expNext[0]:
         level[0] = level[0] + 1
         exp[0] = exp[0] - expNext[0]
-        expNext[0] = (
-            50 * math.pow(level[0], 3) - 150 * math.pow(level[0], 2) + 400 * level[0]
-        ) / 3
+        expNext[0] = (50 * math.pow(level[0], 3) - 150 * math.pow(level[0], 2) + 400 * level[0]) / 3
 
 
 class Game:
@@ -55,7 +49,7 @@ class Game:
 
             if int(answer) == int(number):
                 expGain = 10 + rand.randint(0, 100)
-                print('You got it %d EXP!' %expGain)
+                print("You got it %d EXP!" % expGain)
                 exp[0] = exp[0] + expGain
                 UpdateLevel()
             else:

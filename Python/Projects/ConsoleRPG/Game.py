@@ -1,6 +1,7 @@
 from Player import Player
 from States.MainMenuState import MainMenuState
 
+
 class Game:
     def __init__(self):
         self.running = True

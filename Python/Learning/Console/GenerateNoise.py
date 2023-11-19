@@ -47,11 +47,7 @@ while run:
         for k in range(0, NOISE_MAP_SIZE["y"]):
             rect.update(rect.x, rect.y, rectSize, rectSize)
             random.seed(noise[i][k])
-            pygame.draw.rect(
-                screen,
-                (random.random() * 255, random.random() * 255, random.random() * 255),
-                rect,
-            )
+            pygame.draw.rect(screen, (random.random() * 255, random.random() * 255, random.random() * 255), rect)
             rect.update(i * rectSize, k * rectSize, rectSize, rectSize)
 
     # End render loop

@@ -27,7 +27,7 @@ while running:
     elif key[pygame.K_s] == True:
         rect.move_ip(0, 1)
 
-    screen.fill((0,0,0))
+    screen.fill((0, 0, 0))
 
     pygame.draw.rect(screen, (255, 0, 0), rect)
 
