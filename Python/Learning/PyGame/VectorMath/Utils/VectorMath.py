@@ -10,6 +10,11 @@ class Point:
         x = self.x + other.x
         y = self.y + other.y
         return Point(x, y)
+    
+    def __sub__(self, other):
+        x = self.x - other.x
+        y = self.y - other.y
+        return Point(x, y)
 
     def __mul__(self, s):
         x = self.x * s
