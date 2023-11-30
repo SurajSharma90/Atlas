@@ -25,7 +25,8 @@ class Polygon:
             if pl == 1:
                 self.labels[i].point = self.points[i].point - Point(0, 10)
             elif pl > 1 and i > 0 :
-                self.labels[i].point = (self.points[i-1].point + Vector(self.points[i-1].point, self.points[i].point)) * 1.1
+                vec = Vector(self.points[i-1].point, self.points[i].point) * 1.1
+                self.labels[i].point = self.points[i-1].point + vec.get_as_point()
 
     def add_point(self, point: Point):
         # Point
