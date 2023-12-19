@@ -1,6 +1,6 @@
-from Utils.Component import COMPONENT_TYPES
-from Utils.LevelComponent import LevelComponent
-from Utils.AttributeComponent import AttributeComponent
+from Utils.Components.Component import COMPONENT_TYPES
+from Utils.Components.LevelComponent import LevelComponent
+from Utils.Components.AttributeComponent import AttributeComponent
 
 
 class Player:

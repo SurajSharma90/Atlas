@@ -3,6 +3,11 @@ from enum import Enum
 from States.State import State, STATES
 from States.GameState import GameState
 
+#Import from other folder
+# import sys
+# sys.path.insert(1, '../../ConsoleRPG')
+# import Utils.Component
+
 
 @dataclass
 class MainMenuState(State):
@@ -14,3 +19,4 @@ class MainMenuState(State):
         print("(1) Play Game")
         print("(exit) Exit")
         print()
+

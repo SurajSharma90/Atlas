@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from Utils.Component import Component, COMPONENT_TYPES
+from Utils.Components.Component import Component, COMPONENT_TYPES
 from math import pow, sqrt
 
 
