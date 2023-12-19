@@ -6,6 +6,7 @@ try:
         for s in line:
             if s.isdigit():
                 sum += int(s)
+                break
     
     print(sum)
 

@@ -1,9 +1,10 @@
 from States.State import State
 
 
-class MainMenuState(State):
+class GameState(State):
     def __init__(self):
         super().__init__()
-
+    
     def update(self):
-        print("From Main Menu")
+        print("From GameState")
+
