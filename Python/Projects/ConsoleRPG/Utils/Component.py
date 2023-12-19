@@ -4,6 +4,7 @@ from enum import Enum
 
 class COMPONENT_TYPES(Enum):
     LEVEL_COMPONENT = "level_component"
+    ATTRIBUTE_COMPONENT = "attribute_component"
 
 @dataclass 
 class Component:

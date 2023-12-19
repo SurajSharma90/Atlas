@@ -1,9 +1,23 @@
+import json
+from dataclasses import dataclass
 from enum import Enum
 
 
-class State:
-    def __init__(self):
-        print(type(self))
+class STATES(Enum):
+    MAIN_MENU_STATE = "main_menu_state"
+    GAME_STATE = "game_state"
 
-    def update(self):
-        print(type(self))
+@dataclass
+class State:
+    _name: str
+    _metadata: json
+    _state_list: list
+
+    def __init__(self, name: str, state_list: list) -> None:
+        self._name = name
+        self._state_list = state_list
+        with open("metadata.json", 'r') as metadata_file:
+            self._metadata = json.load(metadata_file)
+
+    def update(self) -> None:
+        print("==========" + self._metadata["metadata"][self._name]["title"] + "==========")

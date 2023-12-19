@@ -1,0 +1,13 @@
+{
+    "metadata": {
+        "title": "ConsoleRPG",
+
+        "main_menu_state": {
+            "title": "Main Menu"
+        },
+
+        "game_state": {
+            "title": "Game"
+        }
+    }
+}
