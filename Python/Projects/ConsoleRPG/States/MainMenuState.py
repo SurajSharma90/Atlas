@@ -7,6 +7,7 @@ from States.GameState import GameState
 # import sys
 # sys.path.insert(1, '../../ConsoleRPG')
 # import Utils.Component
+# Run from __main__ and all modules will be found!
 
 
 @dataclass
@@ -19,4 +20,6 @@ class MainMenuState(State):
         print("(1) Play Game")
         print("(exit) Exit")
         print()
+
+        # self._state_list.append(GameState(self._state_list))
 

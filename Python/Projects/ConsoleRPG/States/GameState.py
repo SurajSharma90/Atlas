@@ -1,4 +1,5 @@
 from States.State import State, STATES
+from Utils.Systems.CombatSystem import CombatSystem
 
 
 class GameState(State):
