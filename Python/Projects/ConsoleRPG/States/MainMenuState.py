@@ -17,9 +17,31 @@ class MainMenuState(State):
 
     def update(self) -> None:
         super().update()
-        print("(1) Play Game")
+        print("(1) New Game")
+        print("(2) Load Game")
         print("(exit) Exit")
         print()
+        
+        self.update_input()
 
         # self._state_list.append(GameState(self._state_list))
 
+    def update_input(self) -> None:
+        print("Input: ")
+        
+        input_str = ""
+        try:
+            input_str = int(input())
+        except Exception as e:
+            print(e)
+            pass
+
+        if input_str.isdigit(): 
+            if input_str == "1":
+                self._state_list.append(GameState(self._state_list))
+            if input_str == "2":
+                self._state_list.append(GameState(self._state_list))
+            elif input_str == "exit":
+                self._state_list.pop()
+        else:
+            print("input was not a number, please try again.")

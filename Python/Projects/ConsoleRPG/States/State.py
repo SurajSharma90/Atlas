@@ -16,7 +16,7 @@ class State:
     def __init__(self, name: str, state_list: list) -> None:
         self._name = name
         self._state_list = state_list
-        with open("metadata.json", 'r') as metadata_file:
+        with open("Python\Projects\ConsoleRPG\metadata.json", 'r') as metadata_file:
             self._metadata = json.load(metadata_file)
 
     def update(self) -> None:

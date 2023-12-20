@@ -1,4 +1,4 @@
-from Player import Player
+from Entities.Player import Player
 from States.MainMenuState import MainMenuState
 from States.State import STATES
 from States.GameState import GameState
@@ -20,12 +20,4 @@ class Game:
     def run(self):
         while len(self.states) > 0:
             self.update()
-
-            print("Input: ")
-            input_str = input()
-            if input_str == "exit":
-                self.states.pop()
-                print("del")
-                    
-            print(len(self.states))
             
