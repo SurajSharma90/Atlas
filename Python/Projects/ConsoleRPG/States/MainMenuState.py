@@ -2,6 +2,8 @@ from dataclasses import dataclass
 from enum import Enum
 from States.State import State, STATES
 from States.GameState import GameState
+from Utils.Systems.MenuSystem import MenuSystem
+from Utils.InputValidation import get_input_int
 
 #Import from other folder
 # import sys
@@ -12,24 +14,20 @@ from States.GameState import GameState
 
 @dataclass
 class MainMenuState(State):
+    _menu_system: MenuSystem
+
     def __init__(self, state_list: list) -> None:
         super().__init__(name=STATES.MAIN_MENU_STATE.value, state_list=state_list)
+        self._menu_system = MenuSystem()
+        self.init_menu()
+
+    def init_menu(self) -> None:
+        self._menu_system.add_option(option="New Game")
+        self._menu_system.add_option(option="Load Game")
+        self._menu_system.add_option(option="Exit")
 
     def render_menu(self) -> None:
-        print("(1) New Game")
-        print("(2) Load Game")
-        print("(0) Exit")
-        print()
-
-    def get_input_int(self, prompt: str) -> int:
-        print(prompt)
-        input_int = ""
-        try:
-            input_int = int(input())
-        except Exception as e:
-            print(e)
-        
-        return input_int
+        self._menu_system.render()
 
     def update(self) -> None:
         super().update()
@@ -41,11 +39,14 @@ class MainMenuState(State):
 
     def update_input(self) -> None:
 
-        input_str = self.get_input_int("Input: ")
+        input_int = get_input_int(prompt="Input: ")
 
-        if input_str == 1:
-            self._state_list.append(GameState(self._state_list))
-        if input_str == 2:
-            self._state_list.append(GameState(self._state_list))
-        elif input_str == 0:
-            self._state_list.pop()
+        if(input_int):
+            if input_int == self._menu_system._options["New Game"]:
+                self._state_list.append(GameState(self._state_list))
+            if input_int == self._menu_system._options["Load Game"]:
+                self._state_list.append(GameState(self._state_list))
+            elif input_int == self._menu_system._options["Exit"]:
+                self._state_list.pop()
+        else:
+            print("Wrong input! Try again.")
