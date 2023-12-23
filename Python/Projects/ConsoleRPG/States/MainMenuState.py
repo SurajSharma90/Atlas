@@ -11,6 +11,11 @@ from Utils.InputValidation import get_input_int
 # import Utils.Component
 # Run from __main__ and all modules will be found!
 
+class MenuOptions(Enum):
+    NEW_GAME="New Game"
+    LOAD_GAME="Load Game"
+    EXIT="Exit"
+
 
 @dataclass
 class MainMenuState(State):
@@ -22,9 +27,9 @@ class MainMenuState(State):
         self.init_menu()
 
     def init_menu(self) -> None:
-        self._menu_system.add_option(option="New Game")
-        self._menu_system.add_option(option="Load Game")
-        self._menu_system.add_option(option="Exit")
+        self._menu_system.add_option(option=MenuOptions.NEW_GAME.value, number=1)
+        self._menu_system.add_option(option=MenuOptions.LOAD_GAME.value, number=2)
+        self._menu_system.add_option(option=MenuOptions.EXIT.value, number=0)
 
     def render_menu(self) -> None:
         self._menu_system.render()
@@ -41,12 +46,12 @@ class MainMenuState(State):
 
         input_int = get_input_int(prompt="Input: ")
 
-        if(input_int):
-            if input_int == self._menu_system._options["New Game"]:
+        if(input_int != None):
+            if input_int == self._menu_system.get(MenuOptions.NEW_GAME.value):
                 self._state_list.append(GameState(self._state_list))
-            if input_int == self._menu_system._options["Load Game"]:
+            if input_int == self._menu_system.get(MenuOptions.LOAD_GAME.value):
                 self._state_list.append(GameState(self._state_list))
-            elif input_int == self._menu_system._options["Exit"]:
+            elif input_int == self._menu_system.get(MenuOptions.EXIT.value):
                 self._state_list.pop()
         else:
             print("Wrong input! Try again.")
