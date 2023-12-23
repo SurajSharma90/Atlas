@@ -4,30 +4,29 @@ from enum import Enum
 from Utils.Systems.MenuSystem import MenuSystem
 from Utils.InputValidation import get_input_int
 from Entities.Player import Player
-from States.CharacterCreatorState import CharacterCreatorState
 
 
 class MenuOptions(Enum):
-    TRAVEL_MENU="Travel Menu"
-    CHARACTER_MENU="Character Menu"
+    NEW_CHARACTER="New Character"
+    DELETE_CHARACTER="Delete Character"
+    LIST_CHARACTERS="List Characters"
     EXIT="Exit"
 
 @dataclass
-class GameState(State):
+class CharacterCreatorState(State):
     _menu_system: MenuSystem
     _characters: list[Player]
-    _active_character: Player
 
-    def __init__(self, state_list: list) -> None:
-        super().__init__(name=STATES.GAME_STATE.value, state_list=state_list)
+    def __init__(self, state_list: list, character_list: list[Player]) -> None:
+        super().__init__(name=STATES.CHARACTER_CREATOR_STATE.value, state_list=state_list)
         self._menu_system = MenuSystem()
-        self._characters = []
-        self._active_character = None
+        self._characters = character_list
         self.init_menu()
 
     def init_menu(self) -> None:
-        self._menu_system.add_option(option=MenuOptions.TRAVEL_MENU.value, number=1)
-        self._menu_system.add_option(option=MenuOptions.CHARACTER_MENU.value, number=2)
+        self._menu_system.add_option(option=MenuOptions.NEW_CHARACTER.value, number=1)
+        self._menu_system.add_option(option=MenuOptions.DELETE_CHARACTER.value, number=2)
+        self._menu_system.add_option(option=MenuOptions.LIST_CHARACTERS.value, number=3)
         self._menu_system.add_option(option=MenuOptions.EXIT.value, number=0)
 
     def render_menu(self) -> None:
@@ -42,10 +41,12 @@ class GameState(State):
         input_int = get_input_int(prompt="Input: ")
 
         if(input_int != None):
-            if input_int == self._menu_system.get(MenuOptions.TRAVEL_MENU.value):
+            if input_int == self._menu_system.get(MenuOptions.NEW_CHARACTER.value):
                 pass
-            if input_int == self._menu_system.get(MenuOptions.CHARACTER_MENU.value):
-                self._state_list.append(CharacterCreatorState(state_list=self._state_list, character_list=self._characters))
+            if input_int == self._menu_system.get(MenuOptions.DELETE_CHARACTER.value):
+                pass
+            if input_int == self._menu_system.get(MenuOptions.LIST_CHARACTERS.value):
+                pass
             elif input_int == self._menu_system.get(MenuOptions.EXIT.value):
                 self._state_list.pop()
         else:

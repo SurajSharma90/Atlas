@@ -6,6 +6,8 @@ from enum import Enum
 class STATES(Enum):
     MAIN_MENU_STATE = "main_menu_state"
     GAME_STATE = "game_state"
+    TRAVEL_STATE = "travel_state"
+    CHARACTER_CREATOR_STATE = "character_creator_state"
 
 @dataclass
 class State:

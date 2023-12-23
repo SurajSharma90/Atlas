@@ -8,6 +8,14 @@
 
         "game_state": {
             "title": "Game"
+        },
+
+        "travel_state": {
+            "title": "Travel"
+        },
+
+        "character_creator_state": {
+            "title": "Character Creator"
         }
     }
 }
