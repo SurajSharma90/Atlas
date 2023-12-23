@@ -10,6 +10,8 @@ from States.CharacterCreatorState import CharacterCreatorState
 class MenuOptions(Enum):
     TRAVEL_MENU="Travel Menu"
     CHARACTER_MENU="Character Menu"
+    LIST_CHARACTERS="List Characters"
+    SELECT_CHARACTER="Select Character"
     EXIT="Exit"
 
 @dataclass
@@ -28,13 +30,20 @@ class GameState(State):
     def init_menu(self) -> None:
         self._menu_system.add_option(option=MenuOptions.TRAVEL_MENU.value, number=1)
         self._menu_system.add_option(option=MenuOptions.CHARACTER_MENU.value, number=2)
+        self._menu_system.add_option(option=MenuOptions.LIST_CHARACTERS.value, number=3)
+        self._menu_system.add_option(option=MenuOptions.SELECT_CHARACTER.value, number=4)
         self._menu_system.add_option(option=MenuOptions.EXIT.value, number=0)
 
     def render_menu(self) -> None:
         self._menu_system.render()
 
+    def render_active_player(self) -> None:
+        if self._active_character != None:
+            print(f"[ Selected Character: {self._active_character._name} | Level: [=======-----] ]")
+
     def update(self) -> None:
-        super().update()        
+        super().update()
+        self.render_active_player()
         self.render_menu()
         self.update_input()
 
@@ -46,7 +55,33 @@ class GameState(State):
                 pass
             if input_int == self._menu_system.get(MenuOptions.CHARACTER_MENU.value):
                 self._state_list.append(CharacterCreatorState(state_list=self._state_list, character_list=self._characters))
+            if input_int == self._menu_system.get(MenuOptions.LIST_CHARACTERS.value):
+                self.list_characters()
+            if input_int == self._menu_system.get(MenuOptions.SELECT_CHARACTER.value):
+                self.select_character()
             elif input_int == self._menu_system.get(MenuOptions.EXIT.value):
                 self._state_list.pop()
         else:
             print("Wrong input! Try again.")
+            input()
+    
+    def list_characters(self, start:int = 1) -> None:
+        nr = start
+        for character in self._characters:
+            print(f"{nr}: {character._name}")
+            nr += 1
+        input()
+    
+    def select_character(self) -> None:
+        self.list_characters(start=0)
+        if len(self._characters) > 0:
+            index = get_input_int("Input: ")
+            if index >= 0 and index < len(self._characters):
+                self._active_character = self._characters[index]
+                print(f"Character {self._active_character._name} selected!")
+            else:
+                print("Invalid index. Please try again.")
+        else:
+            print("No characters. Please create some first.")
+            
+        input()

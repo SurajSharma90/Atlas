@@ -11,7 +11,7 @@ class Player(Entity):
     
     def __init__(self, name):
         super().__init__()
-        self._name = "default"
+        self._name = name
         self.init_components()
     
     def init_components(self):

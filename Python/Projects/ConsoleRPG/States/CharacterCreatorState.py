@@ -42,12 +42,26 @@ class CharacterCreatorState(State):
 
         if(input_int != None):
             if input_int == self._menu_system.get(MenuOptions.NEW_CHARACTER.value):
-                pass
+                self.create_character()
             if input_int == self._menu_system.get(MenuOptions.DELETE_CHARACTER.value):
                 pass
             if input_int == self._menu_system.get(MenuOptions.LIST_CHARACTERS.value):
-                pass
+                self.list_characters()
             elif input_int == self._menu_system.get(MenuOptions.EXIT.value):
                 self._state_list.pop()
         else:
             print("Wrong input! Try again.")
+
+    def create_character(self) -> None:
+        print("Input Name: ")
+        name = input()
+        self._characters.append(Player(name=name))
+        print(f"Character with name {name} created!")
+        input()
+    
+    def list_characters(self) -> None:
+        nr = 1
+        for character in self._characters:
+            print(f"{nr}: {character._name}")
+            nr += 1
+        input()
