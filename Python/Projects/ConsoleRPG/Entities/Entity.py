@@ -1,5 +1,7 @@
 from dataclasses import dataclass
-from Utils.Components.Component import COMPONENT_TYPES, Component
+from Utils.Components.Component import Component, ComponentTypes
+from Utils.Components.LevelComponent import LevelComponent
+from Utils.Components.AttributeComponent import AttributeComponent
 from enum import Enum
 
 
@@ -11,7 +13,12 @@ class Entity:
         self._components = {}
     
     def add_component(self, component: Component) -> None:
-        self._components[type(component)] = component
+        if isinstance(component, LevelComponent):
+            self._components[ComponentTypes.LEVEL_COMPONENT] = component
+        elif isinstance(component, AttributeComponent):
+            self._components[ComponentTypes.ATTRIBUTE_COMPONENT] = component
+        else:
+            print("No component type matches with the one given!")
         
     def get_component(self, type: Enum) -> Component:
         return self._components[type]

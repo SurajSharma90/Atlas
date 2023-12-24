@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 from enum import Enum
-from States.State import State, STATES
+from States.State import State, StateTypes
 from States.GameState import GameState
 from Utils.Systems.MenuSystem import MenuSystem
 from Utils.InputValidation import get_input_int
+from Utils.InputUtils import pause_continue
 
 #Import from other folder
 # import sys
@@ -22,7 +23,7 @@ class MainMenuState(State):
     _menu_system: MenuSystem
 
     def __init__(self, state_list: list) -> None:
-        super().__init__(name=STATES.MAIN_MENU_STATE.value, state_list=state_list)
+        super().__init__(name=StateTypes.MAIN_MENU_STATE.value, state_list=state_list)
         self._menu_system = MenuSystem()
         self.init_menu()
 

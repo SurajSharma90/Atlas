@@ -1,9 +1,10 @@
-from States.State import State, STATES
+from States.State import State, StateTypes
 from dataclasses import dataclass
 from enum import Enum
 from Utils.Systems.MenuSystem import MenuSystem
 from Utils.InputValidation import get_input_int
 from Entities.Player import Player
+from Utils.InputUtils import pause_continue
 
 
 class MenuOptions(Enum):
@@ -18,7 +19,7 @@ class CharacterCreatorState(State):
     _characters: list[Player]
 
     def __init__(self, state_list: list, character_list: list[Player]) -> None:
-        super().__init__(name=STATES.CHARACTER_CREATOR_STATE.value, state_list=state_list)
+        super().__init__(name=StateTypes.CHARACTER_CREATOR_STATE.value, state_list=state_list)
         self._menu_system = MenuSystem()
         self._characters = character_list
         self.init_menu()
@@ -57,11 +58,11 @@ class CharacterCreatorState(State):
         name = input()
         self._characters.append(Player(name=name))
         print(f"Character with name {name} created!")
-        input()
+        pause_continue()
     
     def list_characters(self) -> None:
         nr = 1
         for character in self._characters:
             print(f"{nr}: {character._name}")
             nr += 1
-        input()
+        pause_continue()

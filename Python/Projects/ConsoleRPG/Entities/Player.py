@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from Entities.Entity import Entity
-from Utils.Components.Component import COMPONENT_TYPES
+from Utils.Components.Component import ComponentTypes
 from Utils.Components.LevelComponent import LevelComponent
 from Utils.Components.AttributeComponent import AttributeComponent
 

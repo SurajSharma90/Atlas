@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from enum import Enum
 
 
-class STATES(Enum):
+class StateTypes(Enum):
     MAIN_MENU_STATE = "main_menu_state"
     GAME_STATE = "game_state"
     TRAVEL_STATE = "travel_state"

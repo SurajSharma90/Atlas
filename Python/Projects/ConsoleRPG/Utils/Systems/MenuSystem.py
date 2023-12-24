@@ -28,3 +28,4 @@ class MenuSystem:
     def render(self) -> None:
         for key in self._options:
             print(f"[{self._options[key]}] - {key}")
+        print("")

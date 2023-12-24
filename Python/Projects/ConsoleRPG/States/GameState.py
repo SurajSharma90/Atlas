@@ -1,10 +1,12 @@
-from States.State import State, STATES
+from States.State import State, StateTypes
 from dataclasses import dataclass
 from enum import Enum
 from Utils.Systems.MenuSystem import MenuSystem
 from Utils.InputValidation import get_input_int
 from Entities.Player import Player
 from States.CharacterCreatorState import CharacterCreatorState
+from Utils.InputUtils import pause_continue
+from Utils.Components.Component import ComponentTypes
 
 
 class MenuOptions(Enum):
@@ -21,7 +23,7 @@ class GameState(State):
     _active_character: Player
 
     def __init__(self, state_list: list) -> None:
-        super().__init__(name=STATES.GAME_STATE.value, state_list=state_list)
+        super().__init__(name=StateTypes.GAME_STATE.value, state_list=state_list)
         self._menu_system = MenuSystem()
         self._characters = []
         self._active_character = None
@@ -39,7 +41,7 @@ class GameState(State):
 
     def render_active_player(self) -> None:
         if self._active_character != None:
-            print(f"[ Selected Character: {self._active_character._name} | Level: [=======-----] ]")
+            print(f"[ Selected Character: {self._active_character._name} | Level: {self._active_character.get_component(type=ComponentTypes.LEVEL_COMPONENT).get_level()} {self._active_character.get_component(type=ComponentTypes.LEVEL_COMPONENT).get_exp_bar(length=10)} ]")
 
     def update(self) -> None:
         super().update()
@@ -63,19 +65,20 @@ class GameState(State):
                 self._state_list.pop()
         else:
             print("Wrong input! Try again.")
-            input()
+            pause_continue()
     
-    def list_characters(self, start:int = 1) -> None:
+    def list_characters(self, start:int = 1, pause:bool = True) -> None:
         nr = start
         for character in self._characters:
             print(f"{nr}: {character._name}")
             nr += 1
-        input()
+        if pause == True:
+            pause_continue()
     
     def select_character(self) -> None:
-        self.list_characters(start=0)
+        self.list_characters(start=0, pause=False)
         if len(self._characters) > 0:
-            index = get_input_int("Input: ")
+            index = get_input_int("Character index: ")
             if index >= 0 and index < len(self._characters):
                 self._active_character = self._characters[index]
                 print(f"Character {self._active_character._name} selected!")
@@ -84,4 +87,4 @@ class GameState(State):
         else:
             print("No characters. Please create some first.")
             
-        input()
+        pause_continue()

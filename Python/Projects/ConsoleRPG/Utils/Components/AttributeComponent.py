@@ -1,9 +1,9 @@
 from dataclasses import dataclass
-from Utils.Components.Component import Component, COMPONENT_TYPES
+from Utils.Components.Component import Component, ComponentTypes
 from enum import Enum
 
 
-class ATTRIBUTE_TYPES(Enum):
+class AttributeTypes(Enum):
     STR="Strength"
     VIT="Vitality"
     DEX="Dexterity"
@@ -17,16 +17,16 @@ class AttributeComponent(Component):
     _attributes: dict
     
     def __init__(self, skillpoints: int = 5) -> None:
-        super().__init__(COMPONENT_TYPES.ATTRIBUTE_COMPONENT)
+        super().__init__(ComponentTypes.ATTRIBUTE_COMPONENT)
         self._skillpoints = skillpoints
         
         self._attributes = {
-            ATTRIBUTE_TYPES.STR: 1,
-            ATTRIBUTE_TYPES.VIT: 1,
-            ATTRIBUTE_TYPES.DEX: 1,
-            ATTRIBUTE_TYPES.AGI: 1,
-            ATTRIBUTE_TYPES.INT: 1,
-            ATTRIBUTE_TYPES.LUC: 1,
+            AttributeTypes.STR: 1,
+            AttributeTypes.VIT: 1,
+            AttributeTypes.DEX: 1,
+            AttributeTypes.AGI: 1,
+            AttributeTypes.INT: 1,
+            AttributeTypes.LUC: 1,
         }
 
     def add_skillpoints(self, skillpoints: int) -> None:
