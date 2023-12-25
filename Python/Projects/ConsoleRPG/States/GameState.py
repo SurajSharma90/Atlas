@@ -14,6 +14,7 @@ class MenuOptions(Enum):
     CHARACTER_MENU="Character Menu"
     LIST_CHARACTERS="List Characters"
     SELECT_CHARACTER="Select Character"
+    CHARACTER_SHEET="Character Sheet"
     EXIT="Exit"
 
 @dataclass
@@ -34,6 +35,7 @@ class GameState(State):
         self._menu_system.add_option(option=MenuOptions.CHARACTER_MENU.value, number=2)
         self._menu_system.add_option(option=MenuOptions.LIST_CHARACTERS.value, number=3)
         self._menu_system.add_option(option=MenuOptions.SELECT_CHARACTER.value, number=4)
+        self._menu_system.add_option(option=MenuOptions.CHARACTER_SHEET.value, number=5)
         self._menu_system.add_option(option=MenuOptions.EXIT.value, number=0)
 
     def render_menu(self) -> None:
@@ -61,6 +63,8 @@ class GameState(State):
                 self.list_characters()
             if input_int == self._menu_system.get(MenuOptions.SELECT_CHARACTER.value):
                 self.select_character()
+            if input_int == self._menu_system.get(MenuOptions.CHARACTER_SHEET.value):
+                self.print_character_sheet()
             elif input_int == self._menu_system.get(MenuOptions.EXIT.value):
                 self._state_list.pop()
         else:
@@ -87,4 +91,11 @@ class GameState(State):
         else:
             print("No characters. Please create some first.")
             
+        pause_continue()
+
+    def print_character_sheet(self) -> None:
+        if self._active_character != None:
+            print(self._active_character.get_character_sheet())
+        else:
+            print("No character selected!")
         pause_continue()
