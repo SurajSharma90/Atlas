@@ -29,15 +29,15 @@ class Game:
             if event.type == pygame.QUIT:
                 self._running = False
 
-                key = pygame.key.get_pressed()
-                if key[pygame.K_a] == True:
-                    print("A")
-                elif key[pygame.K_d] == True:
-                    print("D")
-                if key[pygame.K_w] == True:
-                    print("W")
-                elif key[pygame.K_s] == True:
-                    print("S")
+            key = pygame.key.get_pressed()
+            if key[pygame.K_a] == True:
+                print("A")
+            elif key[pygame.K_d] == True:
+                print("D")
+            if key[pygame.K_w] == True:
+                print("W")
+            elif key[pygame.K_s] == True:
+                print("S")
 
     def render(self):
         self._surface.fill((0, 0, 0))
