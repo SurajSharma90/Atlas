@@ -397,3 +397,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/CPP/Atlas_CPP/Atlas_CPP.sln
+/CPP/Atlas_CPP/Atlas_CPP/Atlas_CPP.vcxproj.filters
+/CPP/Atlas_CPP/Atlas_CPP/Atlas_CPP.vcxproj
