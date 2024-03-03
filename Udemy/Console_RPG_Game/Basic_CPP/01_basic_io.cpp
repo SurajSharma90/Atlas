@@ -9,7 +9,7 @@
 //using namespace std;
 
 //Main function
-int main(int)
+int main(int argc, char** argv)
 {
   //Hello World!
   std::cout << "Hello World!" << std::endl;
@@ -19,8 +19,7 @@ int main(int)
 
   //Stream of strings on different lines
   std::cout 
-  << "Hello" 
-  << " " 
+  << "Hello " 
   << "World" 
   << std::endl;
 
