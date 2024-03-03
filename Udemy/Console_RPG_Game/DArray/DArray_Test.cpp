@@ -14,6 +14,8 @@ int main(int argc, char** argv)
 {
   DArray<int> myArr;
   std::cout << myArr.getNrOfItems() << "\n";
-
+  myArr.add(24);
+  std::cout << myArr.getNrOfItems() << "\n";
+  std::cout << myArr.at(0) << "\n";
   return 0;
 }
