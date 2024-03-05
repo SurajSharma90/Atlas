@@ -33,8 +33,39 @@
 //  unsigned int myUnsigned = 0;
 //
 //  //Const
-//  const int i = 23;
+//  const int myConst = 23;
+//
+//  //Size_t
+//  size_t mySizeT = 54;
+//
+//  //Print all out
+//  cout << "myInt: " << myInt << "\n";
+//  cout << "myDouble: " << myDouble << "\n";
+//  cout << "myString: " << myString << "\n";
+//  cout << "doYouEvenLift: " << doYouEvenLift << "\n";
+//  cout << "mySizeT: " << mySizeT << "\n";
+//
+//  cout << "\n";
+//
+//  //Sizeof
+//  std::cout << "What is the size of an int?: " << sizeof(int) << "\n";
+//  std::cout << "What is the size of a size_t?: " << sizeof(size_t) << "\n";
+//  std::cout << "What is the size of an unsigned int?: " << sizeof(unsigned) << "\n";
+//
+//  cout << "\n";
+//
+//  //MAX
+//  std::cout << "What is the max size of an int?: " << INT_MAX << "\n";
+//  std::cout << "What is the max size of an unsigned?: " << UINT_MAX << "\n";
+//
+//  cout << "\n";
+//
+//  //Make sentence of variables
+//  short myAge = 34;
+//  std::string myName = "Suraj Sharma";
+//  std::cout << "My name is " << myName << " and I am " << myAge << " years old." << " It is nice to meet you and I hope you enjoy this course!" << "\n";
+//
+//  cout << "\n";
 //
 //  return 0;
 //}
-//
