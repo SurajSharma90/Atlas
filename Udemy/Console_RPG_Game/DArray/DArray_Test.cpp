@@ -13,9 +13,29 @@
 int main(int argc, char** argv)
 {
   DArray<int> myArr;
+  std::cout << "Nr of items: " << myArr.getNrOfItems() << "\n";
+
+  for (size_t i = 0; i < 11; i++)
+  {
+    myArr.add(i);
+  }
   std::cout << myArr.getNrOfItems() << "\n";
-  myArr.add(24);
-  std::cout << myArr.getNrOfItems() << "\n";
-  std::cout << myArr.at(0) << "\n";
+
+  for (size_t i = 0; i < myArr.getNrOfItems(); i++)
+  {
+    std::cout << i << ": " << myArr.at(i) << "\n";
+  }
+  std::cout << "Nr of items: " << myArr.getNrOfItems() << "\n";
+
+  myArr.remove(0);
+  myArr.remove(4);
+  myArr.remove(myArr.getNrOfItems()-1);
+  
+  for (size_t i = 0; i < myArr.getNrOfItems(); i++)
+  {
+    std::cout << i << ": " << myArr.at(i) << "\n";
+  }
+  std::cout << "Nr of items: " << myArr.getNrOfItems() << "\n";
+
   return 0;
 }
