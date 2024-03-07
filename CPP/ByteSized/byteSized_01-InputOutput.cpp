@@ -1,22 +1,17 @@
 #include <iostream>
 
+using namespace std;
+
 int main(int argc, char** argv) {
-  
-  std::cout << "Hello World!";
+  cout << "Hello my name " 
+  << "is Suraj, " 
+  << "and I am " 
+  << 34 
+  << " Years old!" 
+  << endl;
 
-  std::cout << "Hello" << "World!";
-
-  std::cout << "New Line!" << std::endl;
-
-  std::cout << "Escape Character New Line!" << "\n";
-
-  std::cout << "Combine" 
-  << "\nSome" 
-  << "\n" 
-  << "Stuff\n"
-  << 34
-  << "\nis\n"
-  << "my age\n";
+  cout << "Hello from new line!\n";
+  cout << "Hello from another new line!";
 
   return 0;
 }
