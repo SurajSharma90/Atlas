@@ -11,28 +11,6 @@ using namespace std;
 //Main function
 int main(int argc, char** argv)
 {
-  //Integer types
-  int myInt = 0;
-  
-  //Decimal types
-  float myFloat = 1.0;
-  double myDouble = 1.1;
-
-  //Text and characters
-  char myChar = 'c';
-  std::string = "Hello World!";
-
-  //Logical types
-  bool doYouEvenLift = false;
-  bool doYouEvenLiftBro = 0;
-
-  //Additional keywords
-  short int myShort = 0;
-  long int myLong = 0;
-  unsigned int myUnsigned = 0;
-
-  //Const
-  const int i = 23;
 
   return 0;
 }
