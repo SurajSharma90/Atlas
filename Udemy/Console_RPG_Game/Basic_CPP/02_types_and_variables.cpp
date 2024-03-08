@@ -47,6 +47,16 @@
 //
 //  cout << "\n";
 //
+//  //Change values
+//  std::cout << "myInt before: " << myInt << "\n";
+//  myInt = 543;
+//  std::cout << "myInt after: " << myInt << "\n";
+//  
+//  //Try and change const value
+//  //myConst = 24;
+//
+//  cout << "\n";
+//
 //  //Sizeof
 //  std::cout << "What is the size of an int?: " << sizeof(int) << "\n";
 //  std::cout << "What is the size of a size_t?: " << sizeof(size_t) << "\n";
