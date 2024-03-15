@@ -2048,12 +2048,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigidbody2D: {fileID: 981801578}
-  jumpForce: 12
+  maxVelocity: 5
   bottomCollisionPoint: {fileID: 1379725521}
   tileLayer:
     serializedVersion: 2
     m_Bits: 128
-  maxVelocity: 5
+  jumpForce: 12
+  maxJumpCount: 1
+  jumpCount: 0
+  playerSpriteRenderer: {fileID: 981801576}
+  cameraTransform: {fileID: 519420032}
 --- !u!1 &1128104378
 GameObject:
   m_ObjectHideFlags: 0
