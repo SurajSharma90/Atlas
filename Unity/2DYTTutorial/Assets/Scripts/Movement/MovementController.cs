@@ -6,7 +6,7 @@ public class MovementController : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField]
-    Rigidbody2D playerRigidbody2D;
+    private Rigidbody2D playerRigidbody2D;
     [SerializeField]
     private float maxVelocity = 5f;
     [Space(10)]
@@ -20,14 +20,15 @@ public class MovementController : MonoBehaviour
     private float jumpForce = 12f;
     [SerializeField]
     private int maxJumpCount = 1;
-    [SerializeField]
     private int jumpCount = 0;
     private bool isGround = true;
     [Space(10)]
 
     [Header("Animation")]
     [SerializeField]
-    SpriteRenderer playerSpriteRenderer = null;
+    private SpriteRenderer playerSpriteRenderer = null;
+    [SerializeField]
+    private Animator playerAnimator = null;
     [Space(10)]
 
     [Header("Camera")]
@@ -38,6 +39,7 @@ public class MovementController : MonoBehaviour
     {
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -82,6 +84,13 @@ public class MovementController : MonoBehaviour
                 transform.position.y,
                 cameraTransform.position.z
                 );
+        }
+
+        if(playerAnimator != null) 
+        {
+            playerAnimator.SetFloat("xVelocity", Mathf.Abs(playerRigidbody2D.velocity.x));
+            playerAnimator.SetFloat("yVelocity", playerRigidbody2D.velocity.y);
+            playerAnimator.SetBool("isGround", isGround);
         }
     }
 

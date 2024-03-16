@@ -1898,6 +1898,7 @@ GameObject:
   - component: {fileID: 981801578}
   - component: {fileID: 981801579}
   - component: {fileID: 981801580}
+  - component: {fileID: 981801581}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -2055,9 +2056,29 @@ MonoBehaviour:
     m_Bits: 128
   jumpForce: 12
   maxJumpCount: 1
-  jumpCount: 0
   playerSpriteRenderer: {fileID: 981801576}
   cameraTransform: {fileID: 519420032}
+--- !u!95 &981801581
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981801575}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f14f5fa98576a0d4489bfa8fc057a7ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1128104378
 GameObject:
   m_ObjectHideFlags: 0
