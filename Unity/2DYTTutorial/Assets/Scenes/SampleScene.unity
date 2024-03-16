@@ -2057,6 +2057,7 @@ MonoBehaviour:
   jumpForce: 12
   maxJumpCount: 1
   playerSpriteRenderer: {fileID: 981801576}
+  playerAnimator: {fileID: 981801581}
   cameraTransform: {fileID: 519420032}
 --- !u!95 &981801581
 Animator:
