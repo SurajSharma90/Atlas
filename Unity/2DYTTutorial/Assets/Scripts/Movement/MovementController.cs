@@ -6,7 +6,7 @@ public class MovementController : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField]
-    private Rigidbody2D playerRigidbody2D;
+    private Rigidbody2D playerRigidbody2D = null;
     [SerializeField]
     private float maxVelocity = 5f;
     [Space(10)]
@@ -29,17 +29,18 @@ public class MovementController : MonoBehaviour
     private SpriteRenderer playerSpriteRenderer = null;
     [SerializeField]
     private Animator playerAnimator = null;
-    [Space(10)]
-
-    [Header("Camera")]
-    [SerializeField]
-    private Transform cameraTransform = null;
+    //[Space(10)]
 
     private void Awake() 
     {
-        playerRigidbody2D = GetComponent<Rigidbody2D>();
-        playerSpriteRenderer = GetComponent<SpriteRenderer>();
-        playerAnimator = GetComponent<Animator>();
+        if (playerRigidbody2D == null)
+            Debug.LogException(new System.NullReferenceException("Player Rigidbody 2D not assigned."));
+        if (bottomCollisionPoint == null)
+            Debug.LogException(new System.NullReferenceException("Bottom Collision Point not assigned."));
+        if (playerSpriteRenderer == null)
+            Debug.LogException(new System.NullReferenceException("Player Sprite Renderer not assigned."));
+        if (playerAnimator == null)
+            Debug.LogException(new System.NullReferenceException("Player Animator not assigned."));
     }
 
     // Start is called before the first frame update
@@ -77,21 +78,9 @@ public class MovementController : MonoBehaviour
         else if (playerRigidbody2D.velocity.x > 0f)
             playerSpriteRenderer.flipX = false;
 
-        if(cameraTransform != null) 
-        {
-            cameraTransform.position = new Vector3(
-                transform.position.x,
-                transform.position.y,
-                cameraTransform.position.z
-                );
-        }
-
-        if(playerAnimator != null) 
-        {
-            playerAnimator.SetFloat("xVelocity", Mathf.Abs(playerRigidbody2D.velocity.x));
-            playerAnimator.SetFloat("yVelocity", playerRigidbody2D.velocity.y);
-            playerAnimator.SetBool("isGround", isGround);
-        }
+        playerAnimator.SetFloat("xVelocity", Mathf.Abs(playerRigidbody2D.velocity.x));
+        playerAnimator.SetFloat("yVelocity", playerRigidbody2D.velocity.y);
+        playerAnimator.SetBool("isGround", isGround);
     }
 
     private void FixedUpdate()
