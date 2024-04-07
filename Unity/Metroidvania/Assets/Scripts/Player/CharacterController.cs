@@ -32,6 +32,9 @@ public class CharacterController : MonoBehaviour
 
         if (playerAnimator == null)
             playerAnimator = GetComponent<Animator>();
+
+        //QualitySettings.vSyncCount = 0;  // VSync must be disabled
+        //Application.targetFrameRate = 20;
     }
 
     // Start is called before the first frame update
@@ -44,7 +47,8 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         //playerRigidbody2D.velocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * maxVelocity;
-        playerRigidbody2D.velocity = moveVector * maxVelocity;
+        //playerRigidbody2D.velocity = moveVector * maxVelocity;
+        //playerRigidbody2D.AddForce(moveVector * maxVelocity * Time.deltaTime);
         //Debug.Log(moveVector);
     }
 
@@ -59,7 +63,7 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        playerRigidbody2D.AddForce(moveVector * maxVelocity * Time.deltaTime);
     }
 
     private void OnEnable()
