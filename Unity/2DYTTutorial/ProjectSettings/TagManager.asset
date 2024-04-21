@@ -47,11 +47,17 @@ TagManager:
   - name: Middleground
     uniqueID: 3392893005
     locked: 0
+  - name: Tilemap_Background
+    uniqueID: 4101261857
+    locked: 0
   - name: Tiles
     uniqueID: 1214824039
     locked: 0
   - name: Player
     uniqueID: 681718229
+    locked: 0
+  - name: Tilemap_Foreground
+    uniqueID: 3784268635
     locked: 0
   - name: Foreground
     uniqueID: 457053493
